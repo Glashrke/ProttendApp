@@ -40,55 +40,59 @@ export default function BottomGlobalNavBar() {
   const isQRActive = isRouteActive(QR_TAB.route);
 
   return (
-    <View style={styles.container}>
-      {/* Divisor entre izquierda y centro */}
-      <View style={[styles.divider, styles.leftDivider]} />
-      
+    <View style={styles.container}>      
       {/* Botones izquierdos */}
       <View style={styles.leftSection}>
-        {TABS.filter(tab => tab.position === "left").map((tab) => (
-          <TouchableOpacity
-            key={tab.route}
-            style={[
-              styles.tab,
-              isRouteActive(tab.route) && styles.activeTab,
-            ]}
-            onPress={() => navigateTo(tab.route)}
-            activeOpacity={0.7}
-          >
-            <Ionicons
-              name={tab.icon as any}
-              size={22}
-              color={isRouteActive(tab.route) ? "#FFD700" : "#fff"}
-            />
-          </TouchableOpacity>
+        {TABS.filter(tab => tab.position === "left").map((tab, index) => (
+          <React.Fragment key={tab.route}>
+            <TouchableOpacity
+              style={[
+                styles.tab,
+                isRouteActive(tab.route) && styles.activeTab,
+              ]}
+              onPress={() => navigateTo(tab.route)}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name={tab.icon as any}
+                size={22}
+                color={isRouteActive(tab.route) ? "#44f9ffff" : "#fff"}
+              />
+            </TouchableOpacity>
+            {/* Línea separadora después de cada botón excepto el último */}
+            {index < TABS.filter(tab => tab.position === "left").length - 1 && (
+              <View style={styles.divider} />
+            )}
+          </React.Fragment>
         ))}
       </View>
 
       {/* Espacio central (vacío) */}
-      <View style={styles.centerSpace} />
-
-      {/* Divisor entre centro y derecha */}
-      <View style={[styles.divider, styles.rightDivider]} />
+      <View style={styles.centerSpace} />    
 
       {/* Botones derechos */}
       <View style={styles.rightSection}>
-        {TABS.filter(tab => tab.position === "right").map((tab) => (
-          <TouchableOpacity
-            key={tab.route}
-            style={[
-              styles.tab,
-              isRouteActive(tab.route) && styles.activeTab,
-            ]}
-            onPress={() => navigateTo(tab.route)}
-            activeOpacity={0.7}
-          >
-            <Ionicons
-              name={tab.icon as any}
-              size={22}
-              color={isRouteActive(tab.route) ? "#FFD700" : "#fff"}
-            />
-          </TouchableOpacity>
+        {TABS.filter(tab => tab.position === "right").map((tab, index) => (
+          <React.Fragment key={tab.route}>
+            <TouchableOpacity
+              style={[
+                styles.tab,
+                isRouteActive(tab.route) && styles.activeTab,
+              ]}
+              onPress={() => navigateTo(tab.route)}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name={tab.icon as any}
+                size={22}
+                color={isRouteActive(tab.route) ? "#44f9ffff" : "#fff"}
+              />
+            </TouchableOpacity>
+            {/* Línea separadora después de cada botón excepto el último */}
+            {index < TABS.filter(tab => tab.position === "right").length - 1 && (
+              <View style={styles.divider} />
+            )}
+          </React.Fragment>
         ))}
       </View>
 
@@ -104,7 +108,7 @@ export default function BottomGlobalNavBar() {
         <Ionicons
           name={QR_TAB.icon as any}
           size={30}
-          color={isQRActive ? "#FFD700" : "#fff"}
+          color={isQRActive ? "#44f9ffff" : "#fff"}
         />
       </TouchableOpacity>
     </View>
@@ -151,7 +155,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   activeTab: {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
   },
   divider: {
     width: 1,
@@ -159,12 +163,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.5)",
     position: "absolute",
     top: "25%",
-  },
-  leftDivider: {
-    left: "40%", // Después de los botones izquierdos
-  },
-  rightDivider: {
-    right: "40%", // Antes de los botones derechos
   },
   centerButtonWrapper: {
     position: "absolute",
@@ -187,6 +185,6 @@ const styles = StyleSheet.create({
   },
   activeCenterButton: {
     backgroundColor: "#1a6fd6", // Color más oscuro cuando está activo
-    borderColor: "#FFD700",
+    borderColor: "#44f9ffff",
   },
 });
