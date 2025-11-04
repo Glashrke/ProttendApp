@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 import BottomGlobalNavBar from "../../components/BottomGlobalNavBar";
 
-export default function HomeScreen() {
+export default function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Pantalla Home</Text>
+      <Text style={styles.text}>Pantalla Configuracion</Text>
       <BottomGlobalNavBar />
     </View>
   );
