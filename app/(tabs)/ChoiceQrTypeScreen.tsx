@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
 
-  /* ----- Segmented Control ----- */
   segmentContainer: {
     flexDirection: "row",
     alignSelf: "center",
@@ -83,7 +82,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 
-  /* ----- Title ----- */
   title: {
     textAlign: "center",
     marginTop: 30,
@@ -92,7 +90,6 @@ const styles = StyleSheet.create({
     color: "#003A70",
   },
 
-  /* ----- QR Area ----- */
   qrWrapper: {
     flex: 1,
     justifyContent: "flex-start",
